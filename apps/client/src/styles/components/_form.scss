@@ -1,0 +1,19 @@
+@use '../variables/spacing' as space;
+.form {
+  &__group {
+    --form-group-gap: #{space.$space-2};
+    display: flex;
+    flex-direction: column;
+    gap: var(--form-group-gap, 0.5rem);
+    padding-block: var(--form-group-gap, 0.5rem);
+
+    &--errorable {
+      margin-bottom: 1rem;
+    }
+  }
+  &__control {
+    border: 1px solid #ccc;
+    border-radius: #{space.$space-2};
+    padding: #{space.$space-2};
+  }
+}

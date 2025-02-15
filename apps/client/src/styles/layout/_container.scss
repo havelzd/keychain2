@@ -1,0 +1,18 @@
+@use '../variables/sizes' as vars;
+
+.container {
+  &--md {
+    max-width: #{vars.$container-md};
+    margin-inline: auto;
+  }
+
+  &--lg {
+    max-width: #{vars.$container-lg};
+    margin-inline: auto;
+  }
+
+  &--sm {
+    max-width: #{vars.$container-sm};
+    margin-inline: auto;
+  }
+}

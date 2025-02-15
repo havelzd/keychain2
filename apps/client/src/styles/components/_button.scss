@@ -1,0 +1,23 @@
+@use '../variables/colors' as *;
+@use '../variables/spacing' as *;
+
+.btn {
+  border-radius: #{$space-4};
+  padding: #{$space-2};
+
+  &--primary {
+    background: var(--clr-primary);
+  }
+
+  &--icon {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    width: fit-content;
+
+    &--inline {
+      padding: 0;
+    }
+  }
+}
