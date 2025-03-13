@@ -1,1 +1,64 @@
-<p>signup works!</p>
+<div class="w-fs grid grid--center">
+  <section class="section w-full flow p-8 mt-8 rounded flex flex-col align-center clr-bg-200">
+    <h1>Sign up</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="register()" class="form form--col w-full | flow">
+      <div class="form__group form__group--outline form__group--errorable">
+        <input class="form__control" type="email" id="email" placeholder="" formControlName="email" [email]="true" />
+        <label for="email"> Email address </label>
+        <!-- Display error message if email is required and dirty or touched -->
+        @if (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) {
+        @if (loginForm.get('email')?.hasError('required')) {
+        <p class="form__error">Email is required</p>
+        } @else if (loginForm.get('email')?.hasError('email')) {
+        <p class="form__error">Email is invalid</p>
+        }
+        }
+      </div>
+      <div class="form__group form__group--outline form__group--errorable">
+        <input id="password" class="form__control" type="password" placeholder="" formControlName="password"
+          minlength="8" />
+        <label for="password"> Password </label>
+        @if (
+        loginForm.get('password')?.dirty || loginForm.get('password')?.touched
+        ) {
+        @if (loginForm.get('password')?.hasError('required')) {
+        <p class="form__error">Password is required</p>
+        } @else if (loginForm.get('password')?.hasError('minlength')) {
+        <p class="form__error">Password is too short</p>
+        }
+        }
+      </div>
+      <div class="form__group form__group--outline form__group--errorable">
+        <input id="first_name" class="form__control" type="text" placeholder="" formControlName="firstName" />
+        <label for="first_name"> First name </label>
+        @if (
+        loginForm.get('firstName')?.dirty ||
+        loginForm.get('firstName')?.touched
+        ) {
+        @if (loginForm.get('firstName')?.hasError('required')) {
+        <p class="form__error">First name is required</p>
+        }
+        }
+      </div>
+      <div class="form__group form__group--outline form__group--errorable">
+        <input class="form__control" type="text" id="last_name" placeholder="" formControlName="lastName" />
+        <label for="last_name"> Last name </label>
+        @if (
+        loginForm.get('lastName')?.dirty || loginForm.get('lastName')?.touched
+        ) {
+        @if (loginForm.get('lastName')?.hasError('required')) {
+        <p class="form__error">Last name is required</p>
+        }
+        }
+      </div>
+      <button [disabled]="!loginForm.valid" class="btn btn--primary | w-full" type="submit">
+        Sign up
+      </button>
+    </form>
+    @if (error()) {
+    <p class="clr-error">{{ error() }}</p>
+    }
+    <p><a href="#">Forgot your password?</a></p>
+    <p><a [routerLink]="['/login']">Already have account?</a></p>
+  </section>
+</div>

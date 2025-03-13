@@ -1,19 +1,74 @@
 @use '../variables/spacing' as space;
+@use '../variables/colors' as colors;
+
 .form {
-  &__group {
-    --form-group-gap: #{space.$space-2};
+  &--col {
     display: flex;
     flex-direction: column;
-    gap: var(--form-group-gap, 0.5rem);
+  }
+
+  &__group {
     padding-block: var(--form-group-gap, 0.5rem);
 
+    &--outline {
+      position: relative;
+
+      & .form__control:focus + label {
+        --clr-label: var(--clr-primary-500);
+      }
+
+      & > .form__control:focus + label,
+      & > .form__control:not(:placeholder-shown) + label {
+        z-index: 10;
+        top: 0.5rem;
+        font-size: 0.7rem;
+      }
+
+      & label {
+        --clr-label: #fcfcfc;
+        position: absolute;
+        z-index: 10;
+        transform-origin: 0;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        padding-inline: 0.5rem;
+        transition: all 0.3s ease;
+        cursor: text;
+        pointer-events: none;
+        color: var(--clr-label);
+      }
+    }
+
     &--errorable {
+      position: relative;
       margin-bottom: 1rem;
     }
   }
+
+  &__error {
+    position: absolute;
+    bottom: -1rem;
+    left: var(--form-group-gap, 0.5rem);
+    color: #{colors.$red-400};
+    font-size: 0.8rem;
+  }
+
   &__control {
-    border: 1px solid #ccc;
+    appearance: none;
+    background: inherit;
+    width: 100%;
+    border: 1px solid #fcfcfc;
     border-radius: #{space.$space-2};
     padding: #{space.$space-2};
+    background: transparent;
+
+    &:focus {
+      outline: none;
+      border-color: var(--clr-primary-500);
+    }
   }
 }
+
+/* class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+/* <label "absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Floating outlined</label> */

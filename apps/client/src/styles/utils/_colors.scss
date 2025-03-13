@@ -1,3 +1,26 @@
-.bg-elevated {
-    background: var(--clr-bg-elevated);
+@use '../variables/_colors.scss' as colors;
+@use '../variables/_themes.scss' as themes;
+
+.clr-error {
+  color: colors.$red-400;
+}
+
+.clr-primary {
+  color: var(--clr-primary-500);
+}
+
+@each $type, $map in themes.$dark {
+  @each $name, $value in $map {
+    .clr-bg-#{$type}-#{$name} {
+      background-color: $value;
+    }
+  }
+}
+
+
+@each $shade in map-keys(map-get(themes.$light, 'neutral')) {
+  .clr-bg-#{$shade} {
+    background-color: light-dark(map-get(map-get(themes.$light, 'neutral'), $shade),
+        map-get(map-get(themes.$dark, 'neutral'), $shade));
+  }
 }

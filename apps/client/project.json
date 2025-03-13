@@ -8,12 +8,16 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/client",
         "index": "apps/client/src/index.html",
         "browser": "apps/client/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/client/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -22,7 +26,9 @@
             "input": "apps/client/public"
           }
         ],
-        "styles": ["apps/client/src/styles.scss"],
+        "styles": [
+          "apps/client/src/styles.scss"
+        ],
         "scripts": [],
         "server": "apps/client/src/main.server.ts",
         "ssr": {
@@ -49,7 +55,13 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/client/src/environments/environment.ts",
+              "with": "apps/client/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -64,6 +76,9 @@
           "buildTarget": "client:build:development"
         }
       },
+      "options": {
+        "port": 4201
+      },
       "defaultConfiguration": "development"
     },
     "extract-i18n": {
@@ -77,7 +92,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/client/jest.config.ts"
       }

@@ -1,7 +1,36 @@
-@use '../variables/colors';
-@use '../variables/typography';
-@use '../variables/spacing';
+@use '../variables/_themes.scss' as themes;
+@use '../variables/typography' as typography;
 
 :root {
   color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    @each $type, $shades in themes.$dark {
+      @each $shade, $value in $shades {
+        --#{$type}-#{$shade}: #{$value};
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+
+    @each $type, $shades in themes.$light {
+      @each $shade, $value in $shades {
+        --#{$type}-#{$shade}: #{$value};
+      }
+    }
+  }
+}
+
+html {
+  font-family: typography.$font-family;
+  font-size: typography.$font-size;
+  background-color: var(--neutral-100);
 }

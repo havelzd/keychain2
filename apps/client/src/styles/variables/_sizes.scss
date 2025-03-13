@@ -1,3 +1,11 @@
+$container-xsm: 360px;
 $container-sm: 540px;
 $container-md: 720px;
 $container-lg: 960px;
+
+$container-size-map: (
+  xsm: $container-xsm,
+  sm: $container-sm,
+  md: $container-md,
+  lg: $container-lg,
+);

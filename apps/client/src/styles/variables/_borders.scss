@@ -11,6 +11,18 @@ $border-radius-10: 2.5rem;
 $border-radius-11: 2.75rem;
 $border-radius-12: 3rem;
 
-
-// border-size-map
-
+// border-size map
+$border-radius-map: (
+  1: $border-radius-1,
+  2: $border-radius-2,
+  3: $border-radius-3,
+  4: $border-radius-4,
+  5: $border-radius-5,
+  6: $border-radius-6,
+  7: $border-radius-7,
+  8: $border-radius-8,
+  9: $border-radius-9,
+  10: $border-radius-10,
+  11: $border-radius-11,
+  12: $border-radius-12,
+);

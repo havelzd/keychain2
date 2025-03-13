@@ -24,6 +24,35 @@ export default [
           style: 'kebab-case',
         },
       ],
+
+      '@angular-eslint/no-input-rename': 'warn',
+
+      '@angular-eslint/component-max-inline-declarations': [
+        'error',
+        {
+          animations: 20,
+          styles: 8,
+          template: 25,
+        },
+      ],
+
+      '@angular-eslint/component-selector': [
+        'error',
+        {
+          type: 'element',
+          prefix: '',
+          style: 'kebab-case',
+        },
+      ],
+
+      '@angular-eslint/directive-selector': [
+        'error',
+        {
+          type: 'attribute',
+          prefix: '',
+          style: 'camelCase',
+        },
+      ],
     },
   },
   {

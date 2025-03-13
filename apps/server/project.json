@@ -6,34 +6,23 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
-      "options": {
-        "platform": "node",
-        "outputPath": "dist/apps/server",
-        "format": ["cjs"],
-        "bundle": false,
+      "executor": "@nx/webpack:webpack",
+
+"options": {
+        "webpackConfig": "apps/server/webpack.config.js",
         "main": "apps/server/src/main.ts",
         "tsConfig": "apps/server/tsconfig.app.json",
-        "assets": ["apps/server/src/assets"],
-        "generatePackageJson": true,
-        "esbuildOptions": {
-          "sourcemap": true,
-          "outExtension": {
-            ".js": ".js"
-          }
-        }
+        "optimization": false,
+        "outputHashing": "none",
+        "sourceMap": true,
+        "outputPath": "dist/apps/server/",
+        "compiler": "tsc",
+        "target": "node"
       },
+
       "configurations": {
-        "development": {},
-        "production": {
-          "esbuildOptions": {
-            "sourcemap": false,
-            "outExtension": {
-              ".js": ".js"
-            }
-          }
+        "development": {
+          "args": ["node-env=development"]
         }
       }
     },

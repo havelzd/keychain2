@@ -1,23 +1,28 @@
-import Fastify from 'fastify';
-import { app } from './app/app';
+/**
+ * This is not a production server yet!
+ * This is only a minimal backend to get started.
+ */
 
-const host = process.env.HOST ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+import { ConsoleLogger, Logger, VersioningType } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app/app.module';
 
-// Instantiate Fastify with some config
-const server = Fastify({
-  logger: true,
-});
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule, {
+    logger: new ConsoleLogger(),
+  });
+  app.enableCors({ origin: '*' });
+  app.enableVersioning({
+    type: VersioningType.URI,
+  });
 
-// Register your application as a normal plugin.
-server.register(app);
+  const globalPrefix = 'api';
+  app.setGlobalPrefix(globalPrefix);
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  Logger.log(
+    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`,
+  );
+}
 
-// Start listening.
-server.listen({ port, host }, (err) => {
-  if (err) {
-    server.log.error(err);
-    process.exit(1);
-  } else {
-    console.log(`[ ready ] http://${host}:${port}`);
-  }
-});
+bootstrap();

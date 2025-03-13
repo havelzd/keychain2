@@ -9,6 +9,10 @@ body {
   margin: 0;
 }
 
+a {
+  color: var(--clr-secondary-500);
+}
+
 ul,
 ol {
   list-style: none;
@@ -26,4 +30,19 @@ blockquote,
 dl,
 dd {
   margin: 0;
+}
+
+input {
+  background-color: transparent;
+  appearance: none;
+  line-height: 1.5;
+  border-radius: 0.5rem;
+  border: 1px solid var(--secondary-500);
+  padding: 0.5rem 1rem;
+
+  &:focus,
+  :focus-visible {
+    outline: none;
+    border-color: var(--primary-500);
+  }
 }

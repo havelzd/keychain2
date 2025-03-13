@@ -1,0 +1,15 @@
+// _functions.scss
+@function reverse-map($map) {
+  $keys: map-keys($map);
+  $values: map-values($map);
+  $new-map: (
+  );
+
+@for $i from 1 through length($keys) {
+  $new-map: map-merge($new-map,
+      (nth($keys, $i): nth($values, length($values) + 1 - $i),
+      ));
+}
+
+@return $new-map;
+}

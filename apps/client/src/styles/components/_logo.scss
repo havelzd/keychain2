@@ -1,0 +1,18 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--primary-600);
+  font-family: Lato, sans-serif;
+
+  &>ng-icon {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &>h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}

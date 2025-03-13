@@ -1,5 +1,13 @@
 <div class="main-wrapper">
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+  <header>
+    <app-primary-header />
+  </header>
+  <div class="content-wrapper">
+    <aside>
+      <app-primary-nav />
+    </aside>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 </div>

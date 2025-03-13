@@ -2,6 +2,9 @@
 
 .m {
   &x-auto {
+    margin-inline: auto;
+  }
+  &y-auto {
     margin-block: auto;
   }
 }
@@ -16,6 +19,9 @@
     }
     &y-#{$name} {
       margin-inline: $value;
+    }
+    &t-#{$name} {
+      margin-block-start: $value;
     }
   }
 

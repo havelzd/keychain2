@@ -1,0 +1,11 @@
+<nav class="navbar navbar--vertical">
+  <ul class="nav nav--vertical">
+    @for (item of items; track item.label) {
+    <li class="nav__item">
+      <a class="nav__item__link" routerLinkActive="active" [routerLink]="[item.url]">
+        <ng-icon [name]="item.iconName" />
+        {{ item.label }}</a>
+    </li>
+    }
+  </ul>
+</nav>
